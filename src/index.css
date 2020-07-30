@@ -15,6 +15,31 @@ body {
   max-width: 960px;
   margin: 0 auto;
 }
+
+.title {
+  position: relative;
+}
+
+.title button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 1rem;
+  padding: 0.5rem;
+  background: var(--primary);
+  color: var(--secondary);
+  border: 2px solid var(--secondary);
+
+  transition: all 0.3s;
+}
+
+.title button:hover {
+  cursor: pointer;
+  background: var(--secondary);
+  color: var(--primary);
+  border: 2px solid var(--primary);
+}
+
 .title h1 {
   color: var(--primary);
   font-size: 1.5rem;
@@ -28,6 +53,51 @@ body {
 .title h2 {
   margin-top: 60px;
   font-size: 2.6rem;
+}
+
+/* User Profile */
+.user {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.user h3 {
+}
+
+.user img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+/* Auth button style */
+.auth {
+  display: grid;
+  align-items: center;
+}
+
+.auth button {
+  font-size: 1.5rem;
+  padding: 1.5rem;
+  background: var(--primary);
+  color: var(--secondary);
+  border: 2px solid var(--secondary);
+
+  transition: all 0.3s;
+}
+
+.auth button:hover {
+  cursor: pointer;
+  background: var(--secondary);
+  color: var(--primary);
+  border: 2px solid var(--primary);
+}
+
+.auth img {
+  width: 45%;
+  margin: 2rem auto;
+  border: 2px solid var(--primary);
 }
 
 /* upload form styles */
