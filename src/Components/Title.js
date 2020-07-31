@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 
 import { AuthContext } from '../context/authContext';
+import UserProfile from './UserProfile';
 
 function Title(props) {
   const authContext = useContext(AuthContext);
@@ -10,6 +11,7 @@ function Title(props) {
       {authContext.isAuth && (
         <button onClick={() => authContext.logOut()}>Log Out</button>
       )}
+      {authContext.isAuth && <UserProfile />}
       <h2>{props.title}</h2>
       <p>
         Your friendly Firegram!

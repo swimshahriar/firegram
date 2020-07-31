@@ -1,14 +1,16 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import {
   storageService,
   firestoreService,
   timeStamp,
 } from '../firebase/config';
+import { AuthContext } from '../context/authContext';
 
 const useStorage = (file) => {
   const [progress, setProgress] = useState(0);
   const [error, setError] = useState(null);
   const [url, setUrl] = useState(null);
+  const authContext = useContext(AuthContext);
 
   useEffect(() => {
     // file reference and db reference
@@ -30,11 +32,12 @@ const useStorage = (file) => {
         const url = await storageRef.getDownloadURL();
         const createdAt = timeStamp();
         const name = file.name;
-        firestoreRef.add({ name, url, createdAt });
+        const userId = authContext.user.userId;
+        firestoreRef.add({ name, userId, url, createdAt });
         setUrl(url);
       }
     );
-  }, [file]);
+  }, [file, authContext]);
 
   return { progress, error, url };
 };

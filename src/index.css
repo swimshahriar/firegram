@@ -61,8 +61,6 @@ body {
   align-items: center;
   justify-content: center;
 }
-.user h3 {
-}
 
 .user img {
   width: 50px;
@@ -104,6 +102,7 @@ body {
 form {
   margin: 30px auto 10px;
   text-align: center;
+  position: relative;
 }
 label input {
   height: 0;
@@ -112,12 +111,13 @@ label input {
 }
 label {
   display: block;
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   border: 1px solid var(--primary);
   border-radius: 50%;
   margin: 10px auto;
-  line-height: 30px;
+  line-height: 40px;
+  background-color: #fff;
   color: var(--primary);
   font-weight: bold;
   font-size: 24px;

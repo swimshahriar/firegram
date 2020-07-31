@@ -6,7 +6,6 @@ import ImageGrid from './Components/ImageGrid';
 import Modal from './Components/Modal';
 import Auth from './Components/Auth';
 import { AuthContext } from './context/authContext';
-import UserProfile from './Components/UserProfile';
 
 function App() {
   const [selectedImage, setSelectedImage] = useState({});
@@ -23,7 +22,6 @@ function App() {
     content = (
       <React.Fragment>
         <Title title="Your Pictures" />
-        <UserProfile />
         <UploadForm />
         <ImageGrid setSelectedImage={setSelectedImage} />
         {selectedImage.url && (

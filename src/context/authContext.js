@@ -13,16 +13,15 @@ const AuthContextProvider = (props) => {
   const [token, setToken] = useState(null);
   const [user, setUser] = useState({});
 
-  const loginHandler = useCallback((token, userName, userImage) => {
+  const loginHandler = useCallback((token, userId, userName, userImage) => {
     if (token) {
       setIsAuthenticated(true);
       setToken(token);
-      setUser({ userName, userImage });
+      setUser({ userId, userName, userImage });
     } else {
       return new Error('Login Failed!');
     }
   }, []);
-  console.log(token);
 
   const logOutHandler = () => {
     setIsAuthenticated(false);

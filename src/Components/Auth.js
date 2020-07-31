@@ -24,15 +24,16 @@ const Auth = () => {
         const user = result.user;
         const userName = user.displayName;
         const userImage = user.photoURL;
-        console.log(userImage);
-        authContext.login(token, userName, userImage);
+        const userId = user.uid;
+
+        authContext.login(token, userId, userName, userImage);
       });
   };
 
   return (
     <div className="auth">
       <button onClick={loginHandler}>Login with Google</button>
-      <img src="https://shorturl.at/eCSY4" alt="firegram" />
+      {/* <img src="https://i.ibb.co/1f3hRT0/firegram.png" alt="firegram" /> */}
     </div>
   );
 };

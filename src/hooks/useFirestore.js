@@ -1,15 +1,19 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 
 import { firestoreService } from '../firebase/config';
+import { AuthContext } from '../context/authContext';
 
 const useFirestore = (collection) => {
   const [docs, setDocs] = useState([]);
+  const authContext = useContext(AuthContext);
+  const userId = authContext.user.userId;
 
   // Getting data from firestore
   useEffect(() => {
     console.log('called');
     const unsub = firestoreService
       .collection(collection)
+      .where('userId', '==', `${userId}`)
       .orderBy('createdAt', 'desc')
       .onSnapshot((snap) => {
         let documents = [];
@@ -19,7 +23,7 @@ const useFirestore = (collection) => {
         setDocs(documents);
       });
     return () => unsub();
-  }, [collection]);
+  }, [collection, userId]);
 
   return { docs };
 };
