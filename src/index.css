@@ -149,6 +149,12 @@ label:hover {
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 20px;
 }
+
+.img-grid-h1 {
+  display: grid;
+  place-items: center;
+}
+
 .img-wrap {
   overflow: hidden;
   height: 0;
@@ -193,4 +199,19 @@ label:hover {
   color: #fff;
   display: grid;
   place-items: center;
+}
+
+.backdrop button {
+  position: absolute;
+  top: 60px;
+  right: 30px;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--error);
+  background: #fff;
+  color: var(--error);
+}
+
+.backdrop button:hover {
+  cursor: pointer;
 }

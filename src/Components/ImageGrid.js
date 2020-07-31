@@ -6,10 +6,11 @@ import useFirestore from '../hooks/useFirestore';
 const ImageGrid = ({ setSelectedImage }) => {
   const { docs } = useFirestore('images');
 
-  return (
-    <div className="img-grid">
-      {docs ? (
-        docs.map((doc) => {
+  let content = <h1 className="img-grid-h1">No Image Found!</h1>;
+  if (docs.length !== 0) {
+    content = (
+      <div className="img-grid">
+        {docs.map((doc) => {
           return (
             <motion.div
               className="img-wrap"
@@ -27,14 +28,12 @@ const ImageGrid = ({ setSelectedImage }) => {
               />
             </motion.div>
           );
-        })
-      ) : (
-        <div>
-          <h1>No Images!</h1>
-        </div>
-      )}
-    </div>
-  );
+        })}
+      </div>
+    );
+  }
+
+  return content;
 };
 
 export default ImageGrid;

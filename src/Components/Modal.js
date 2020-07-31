@@ -1,14 +1,37 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+import { storageService, firestoreService } from '../firebase/config';
+
 const Modal = ({ selectedImage, setSelectedImage }) => {
-  const { url, name } = selectedImage;
+  const { id, url, name } = selectedImage;
 
   // backdrop click to close modal
   const backdropClickHandler = (event) => {
     if (event.target.classList.contains('backdrop')) {
       setSelectedImage({});
     }
+  };
+
+  // delete handler
+  const deleteHandler = () => {
+    const storageRef = storageService.ref(name);
+
+    // deleting from firestore
+    firestoreService
+      .collection('images')
+      .doc(id)
+      .delete()
+      .then(() => {})
+      .catch((error) => {});
+
+    // deleting from storage
+    storageRef
+      .delete()
+      .then(() => {})
+      .catch((error) => {});
+
+    setSelectedImage({});
   };
 
   return (
@@ -32,6 +55,7 @@ const Modal = ({ selectedImage, setSelectedImage }) => {
       >
         {name}
       </motion.p>
+      <button onClick={deleteHandler}>Delete</button>
     </motion.div>
   );
 };

@@ -10,7 +10,6 @@ const useFirestore = (collection) => {
 
   // Getting data from firestore
   useEffect(() => {
-    console.log('called');
     const unsub = firestoreService
       .collection(collection)
       .where('userId', '==', `${userId}`)
