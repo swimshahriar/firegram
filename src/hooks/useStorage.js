@@ -14,7 +14,9 @@ const useStorage = (file) => {
 
   useEffect(() => {
     // file reference and db reference
-    const storageRef = storageService.ref(file.name);
+    const storageRef = storageService.ref(
+      file.name + '_' + authContext.user.userId
+    );
     const firestoreRef = firestoreService.collection('images');
 
     // Image upload state

@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
 import useFirestore from '../hooks/useFirestore';
+import Spinner from './Spinner';
 
 const ImageGrid = ({ setSelectedImage }) => {
+  const [isLoading, setIsLoading] = useState(true);
   const { docs } = useFirestore('images');
+
+  setTimeout(() => {
+    setIsLoading(false);
+  }, 2000);
+
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   let content = <h1 className="img-grid-h1">No Image Found!</h1>;
   if (docs.length !== 0) {

@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { motion } from 'framer-motion';
 
 import { storageService, firestoreService } from '../firebase/config';
+import { AuthContext } from '../context/authContext';
 
 const Modal = ({ selectedImage, setSelectedImage }) => {
+  const authContext = useContext(AuthContext);
   const { id, url, name } = selectedImage;
 
   // backdrop click to close modal
@@ -15,7 +17,7 @@ const Modal = ({ selectedImage, setSelectedImage }) => {
 
   // delete handler
   const deleteHandler = () => {
-    const storageRef = storageService.ref(name);
+    const storageRef = storageService.ref(name + '_' + authContext.user.userId);
 
     // deleting from firestore
     firestoreService
